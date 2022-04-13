@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * the board
+ * stores puppet, stores
+ */
 @SuppressWarnings("serial")
 public class GamePane extends GameGrid
 {

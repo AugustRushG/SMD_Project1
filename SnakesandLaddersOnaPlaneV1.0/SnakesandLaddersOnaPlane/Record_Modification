@@ -1,0 +1,7 @@
+Task 1
+When the hand got clicked(NavigationPane->buttonClicked), it starts to roll(NavigationPane->roll)
+Which creat a die(Die class), runs act in Die class, then call startMoving(NavigationPane->startMoving)
+NavigationPane as a controller, contains the method of roll(), which violates the rule of high cohesion,
+it would be better to just control the input and the output of the NavigationPane.
+So, it would be better to create a new class and let it contains the method of roll, and have the responsibilities of
+create dices.

@@ -7,20 +7,28 @@ public class Die extends Actor
   private NavigationPane np;
   private int nb;
 
-  Die(int nb, NavigationPane np)
+  private DiceRoller diceRoller;
+  private int index;
+
+  Die(int nb, DiceRoller diceRoller, int index )
   {
     super("sprites/pips" + nb + ".gif", 7);
     this.nb = nb;
-    this.np = np;
+    this.diceRoller=diceRoller;
+    this.index=index;
   }
 
+  //start moving once the roll is over
   public void act()
   {
     showNextSprite();
     if (getIdVisible() == 6)
     {
       setActEnabled(false);
-      np.startMoving(nb);
+
+      //tell dice roller this dice is finished
+      diceRoller.finishedRolling(index);
+
     }
   }
 

@@ -9,6 +9,11 @@ import snakeladder.utility.ServicesRandom;
 import java.util.ArrayList;
 import java.util.Properties;
 
+/**
+ * important part of the code, contains many function
+ * controller, act with players
+ */
+
 @SuppressWarnings("serial")
 public class NavigationPane extends GameGrid
   implements GGButtonListener
@@ -21,13 +26,19 @@ public class NavigationPane extends GameGrid
       {
         Monitor.putSleep();
         handBtn.show(1);
-       roll(getDieValue());
-        delay(1000);
+
+        //change here to let AI roll dice
+        for (int i=0;i<numberOfDice;i++){
+            roll(getDieValue());
+            delay(1000);
+        }
         handBtn.show(0);
       }
     }
 
   }
+
+ 
 
   private final int DIE1_BUTTON_TAG = 1;
   private final int DIE2_BUTTON_TAG = 2;
@@ -82,10 +93,27 @@ public class NavigationPane extends GameGrid
   private java.util.List<java.util.List<Integer>> dieValues = new ArrayList<>();
   private GamePlayCallback gamePlayCallback;
 
+
+
+  private int numberOfDice;
+  private int count=0;
+
+  //get number of dice
+  public int getNumberOfDice(){
+    return numberOfDice;
+  }
+
+  //create diceRoller
+  private DiceRoller diceRoller=new DiceRoller(this);
+
+
+
   NavigationPane(Properties properties)
   {
     this.properties = properties;
-    int numberOfDice =  //Number of six-sided dice
+
+    //set this to class variable instead of local variable
+    this.numberOfDice =  //Number of six-sided dice
             (properties.getProperty("dice.count") == null)
                     ? 1  // default
                     : Integer.parseInt(properties.getProperty("dice.count"));
@@ -155,6 +183,10 @@ public class NavigationPane extends GameGrid
       }
     }
   }
+
+  /*
+  Probably just add in the six values of the dice
+   */
   void addDieButtons() {
     ManualDieButton manualDieButton = new ManualDieButton();
 
@@ -172,6 +204,10 @@ public class NavigationPane extends GameGrid
     die5Button.addButtonListener(manualDieButton);
     die6Button.addButtonListener(manualDieButton);
   }
+
+  /*
+  task 1, modification here
+   */
 
   private int getDieValue() {
     if (dieValues == null) {
@@ -305,7 +341,10 @@ public class NavigationPane extends GameGrid
   }
 
   void prepareBeforeRoll() {
-    handBtn.setEnabled(false);
+    if (count==numberOfDice){
+      handBtn.setEnabled(false);
+    }
+
     if (isGameOver)  // First click after game over
     {
       isGameOver = false;
@@ -313,13 +352,16 @@ public class NavigationPane extends GameGrid
     }
   }
 
+  //if the hand is clicked, roll the dice
   public void buttonClicked(GGButton btn)
   {
     System.out.println("hand button clicked");
     prepareBeforeRoll();
     roll(getDieValue());
+    count++;
   }
 
+  //roll the dice
   private void roll(int rollNumber)
   {
     int nb = rollNumber;
@@ -330,8 +372,10 @@ public class NavigationPane extends GameGrid
     showPips("");
 
     removeActors(Die.class);
-    Die die = new Die(nb, this);
-    addActor(die, dieBoardLocation);
+
+    diceRoller.roll(nb);
+
+    addActor(diceRoller.getAllDice().get(diceRoller.getAllDice().size()-1), dieBoardLocation);
   }
 
   public void buttonPressed(GGButton btn)

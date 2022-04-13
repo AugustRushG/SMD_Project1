@@ -9,10 +9,24 @@ import java.util.List;
 import java.util.Properties;
 
 @SuppressWarnings("serial")
+/**
+ * entrance of the game, no need to change
+ * read in properties
+ * main function
+ * create games
+ */
+
+
+
 public class FrameTutorial extends JFrame
 {
+
   private final String version = "1.01";
-  
+
+  /**
+   *
+   * @param properties
+   */
   public FrameTutorial(Properties properties)
   {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -40,6 +54,10 @@ public class FrameTutorial extends JFrame
     np.checkAuto();
   }
 
+  /**
+   * main function
+   * @param args
+   */
   public static void main(String[] args)
   {
     final Properties properties;
