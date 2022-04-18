@@ -1,4 +1,5 @@
 Task 1
+
 When the hand got clicked(NavigationPane->buttonClicked), it starts to roll(NavigationPane->roll)
 Which creat a die(Die class), runs act in Die class, then call startMoving(NavigationPane->startMoving)
 NavigationPane as a controller, contains the method of roll(), which violates the rule of high cohesion,
@@ -8,3 +9,12 @@ create dices.
 
 A new variable rollCount is created to record how many rolls have been done this time. If the rollCount == numberOfDice
 set the hands to disable and reset rollCount to 0
+
+Task 2
+
+For task 2, the idea is to create a new boolean variable called isLowest in Puppet, which involves, information expert of
+the Grasp. Puppet has information of how many steps it should move and where its currently locating and where its gonna go.
+So by create a new variale in puppet class is better because it follows the rule of information expert.
+
+set the lowest to true only if the steps moving == the number of dice.
+Only go down if isLowest is false and is on the symbol square.

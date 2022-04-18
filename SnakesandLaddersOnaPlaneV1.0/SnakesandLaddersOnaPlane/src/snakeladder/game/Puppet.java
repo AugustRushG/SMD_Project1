@@ -15,6 +15,9 @@ public class Puppet extends Actor
   private boolean isAuto;
   private String puppetName;
 
+  //modified
+  private boolean isLowest = false;
+
   Puppet(GamePane gp, NavigationPane np, String puppetImage)
   {
     super(puppetImage);
@@ -38,6 +41,8 @@ public class Puppet extends Actor
     this.puppetName = puppetName;
   }
 
+
+  // modified
   void go(int nbSteps)
   {
     if (cellIndex == 100)  // after game over
@@ -46,6 +51,14 @@ public class Puppet extends Actor
       setLocation(gamePane.startLocation);
     }
     this.nbSteps = nbSteps;
+    // task 2, check if it's the lowest
+    // steps will be the numberOfDice
+    if ((nbSteps==navigationPane.getNumberOfDice())){
+      isLowest=true;
+    }
+    else {
+      isLowest=false;
+    }
     setActEnabled(true);
   }
 
@@ -94,7 +107,8 @@ public class Puppet extends Actor
     }
 
     // Animation: Move on connection
-    if (currentCon != null)
+    // has to be not lowest and not going down by the snake
+    if (currentCon != null && !(isLowest && currentCon.cellEnd-currentCon.cellStart < 0))
     {
       int x = gamePane.x(y, currentCon);
       setPixelLocation(new Point(x, y));
@@ -131,7 +145,8 @@ public class Puppet extends Actor
       if (nbSteps == 0)
       {
         // Check if on connection start
-        if ((currentCon = gamePane.getConnectionAt(getLocation())) != null)
+        if ((currentCon = gamePane.getConnectionAt(getLocation())) != null
+                && !(isLowest && currentCon.cellEnd-currentCon.cellStart < 0))
         {
           gamePane.setSimulationPeriod(50);
           y = gamePane.toPoint(currentCon.locStart).y;
