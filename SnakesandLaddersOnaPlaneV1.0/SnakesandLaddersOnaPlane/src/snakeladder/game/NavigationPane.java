@@ -96,7 +96,7 @@ public class NavigationPane extends GameGrid
 
 
   private int numberOfDice;
-  private int count=0;
+  private int rollCount=0;
 
   //get number of dice
   public int getNumberOfDice(){
@@ -278,10 +278,15 @@ public class NavigationPane extends GameGrid
     if (text != "") System.out.println(text);
   }
 
+  //modified
   void showStatus(String text)
   {
     statusField.setText(text);
-    System.out.println("Status: " + text);
+    System.out.println("Status : " + text);
+    System.out.println(text);
+    if (text=="Done. Click the hand!"){
+      rollCount=0;
+    }
   }
 
   void showScore(String text)
@@ -340,9 +345,15 @@ public class NavigationPane extends GameGrid
     gp.getPuppet().go(nb);
   }
 
+  // modified
   void prepareBeforeRoll() {
-    if (count==numberOfDice){
+    // only rollCount == the number of dice set to false
+    System.out.println("count is "+rollCount);
+    if (rollCount==numberOfDice-1){
+      System.out.println("set count back to 0");
+      // set it back to zero in the method of show status
       handBtn.setEnabled(false);
+      // reset count back to 0
     }
 
     if (isGameOver)  // First click after game over
@@ -353,12 +364,14 @@ public class NavigationPane extends GameGrid
   }
 
   //if the hand is clicked, roll the dice
+  //modified
   public void buttonClicked(GGButton btn)
   {
+
     System.out.println("hand button clicked");
     prepareBeforeRoll();
+    rollCount++;
     roll(getDieValue());
-    count++;
   }
 
   //roll the dice

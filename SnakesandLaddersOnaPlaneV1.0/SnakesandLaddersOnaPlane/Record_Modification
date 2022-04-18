@@ -5,3 +5,6 @@ NavigationPane as a controller, contains the method of roll(), which violates th
 it would be better to just control the input and the output of the NavigationPane.
 So, it would be better to create a new class and let it contains the method of roll, and have the responsibilities of
 create dices.
+
+A new variable rollCount is created to record how many rolls have been done this time. If the rollCount == numberOfDice
+set the hands to disable and reset rollCount to 0
