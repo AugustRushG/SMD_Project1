@@ -103,6 +103,7 @@ public class NavigationPane extends GameGrid
     return numberOfDice;
   }
 
+
   //create diceRoller
   private DiceRoller diceRoller=new DiceRoller(this);
 
@@ -324,6 +325,22 @@ public class NavigationPane extends GameGrid
       showStatus("Done. Click the hand!");
       String result = gp.getPuppet().getPuppetName() + " - pos: " + currentIndex;
       showResult(result);
+
+
+      //check if anyone else is in
+      int currentPuppetIndex=gp.getCurrentPuppetIndex();
+
+      //if so, move back 
+      int i=0;
+      for (Puppet p: gp.getAllPuppets()){
+        if (i!=currentPuppetIndex && p.getCellIndex() == currentIndex){
+          p.setBack(true);
+          p.go(-1);
+        }
+        i++;
+      }
+
+
       gp.switchToNextPuppet();
       // System.out.println("current puppet - auto: " + gp.getPuppet().getPuppetName() + "  " + gp.getPuppet().isAuto() );
 

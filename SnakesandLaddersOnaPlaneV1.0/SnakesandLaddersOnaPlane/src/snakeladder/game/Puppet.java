@@ -17,6 +17,11 @@ public class Puppet extends Actor
 
   //modified
   private boolean isLowest = false;
+  private boolean isBack = false;
+
+  public void setBack(boolean isBack){
+    this.isBack=isBack;
+  }
 
   Puppet(GamePane gp, NavigationPane np, String puppetImage)
   {
@@ -72,26 +77,18 @@ public class Puppet extends Actor
     return cellIndex;
   }
 
-  private void moveToNextCell()
-  {
-    int tens = cellIndex / 10;
-    int ones = cellIndex - tens * 10;
-    if (tens % 2 == 0)     // Cells starting left 01, 21, .. 81
-    {
-      if (ones == 0 && cellIndex > 0)
-        setLocation(new Location(getX(), getY() - 1));
-      else
-        setLocation(new Location(getX() + 1, getY()));
+
+
+  private void moveToCell(int nbSteps){
+    if (nbSteps>0){
+      cellIndex++;
     }
-    else     // Cells starting left 20, 40, .. 100
-    {
-      if (ones == 0)
-        setLocation(new Location(getX(), getY() - 1));
-      else
-        setLocation(new Location(getX() - 1, getY()));
+    else if (nbSteps<0){
+      cellIndex--;
     }
-    cellIndex++;
+    setLocation(GamePane.cellToLocation(cellIndex));
   }
+
 
   public void act()
   {
@@ -130,9 +127,14 @@ public class Puppet extends Actor
     }
 
     // Normal movement
-    if (nbSteps > 0)
+
+
+    // add negative move method
+
+    if (nbSteps != 0)
     {
-      moveToNextCell();
+
+      moveToCell(nbSteps);
 
       if (cellIndex == 100)  // Game over
       {
@@ -141,7 +143,9 @@ public class Puppet extends Actor
         return;
       }
 
-      nbSteps--;
+      if (nbSteps >0) nbSteps--;
+      if (nbSteps <0) nbSteps++;
+
       if (nbSteps == 0)
       {
         // Check if on connection start
