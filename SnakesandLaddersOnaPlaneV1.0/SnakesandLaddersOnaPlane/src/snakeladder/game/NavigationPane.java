@@ -97,6 +97,7 @@ public class NavigationPane extends GameGrid
 
   private int numberOfDice;
   private int rollCount=0;
+  private boolean isMovedBack=false;
 
   //get number of dice
   public int getNumberOfDice(){
@@ -106,6 +107,11 @@ public class NavigationPane extends GameGrid
 
   //create diceRoller
   private DiceRoller diceRoller=new DiceRoller(this);
+
+  //
+  public void setIsMovedBack(boolean isMovedBack){
+    this.isMovedBack=isMovedBack;
+  }
 
 
 
@@ -302,7 +308,7 @@ public class NavigationPane extends GameGrid
     System.out.println("Result: " + text);
   }
 
-  void prepareRoll(int currentIndex)
+  void prepareRoll(int currentIndex, boolean isBack)
   {
     if (currentIndex == 100)  // Game over
     {
@@ -330,10 +336,14 @@ public class NavigationPane extends GameGrid
       //check if anyone else is in
       int currentPuppetIndex=gp.getCurrentPuppetIndex();
 
-      //if so, move back 
+      //if so, move back
+
+
       int i=0;
+
       for (Puppet p: gp.getAllPuppets()){
         if (i!=currentPuppetIndex && p.getCellIndex() == currentIndex){
+          System.out.println("set back now is true");
           p.setBack(true);
           p.go(-1);
         }
@@ -341,7 +351,17 @@ public class NavigationPane extends GameGrid
       }
 
 
-      gp.switchToNextPuppet();
+
+      if (!isBack){
+        System.out.println("switching to next puppet");
+        gp.switchToNextPuppet();
+      }
+
+
+
+
+
+
       // System.out.println("current puppet - auto: " + gp.getPuppet().getPuppetName() + "  " + gp.getPuppet().isAuto() );
 
       if (isAuto) {
@@ -365,9 +385,9 @@ public class NavigationPane extends GameGrid
   // modified
   void prepareBeforeRoll() {
     // only rollCount == the number of dice set to false
-    System.out.println("count is "+rollCount);
+
     if (rollCount==numberOfDice-1){
-      System.out.println("set count back to 0");
+
       // set it back to zero in the method of show status
       handBtn.setEnabled(false);
       // reset count back to 0

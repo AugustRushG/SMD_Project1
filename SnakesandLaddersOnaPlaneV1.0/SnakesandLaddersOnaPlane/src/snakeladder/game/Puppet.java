@@ -64,6 +64,7 @@ public class Puppet extends Actor
     else {
       isLowest=false;
     }
+
     setActEnabled(true);
   }
 
@@ -76,7 +77,6 @@ public class Puppet extends Actor
   int getCellIndex() {
     return cellIndex;
   }
-
 
 
   private void moveToCell(int nbSteps){
@@ -121,7 +121,7 @@ public class Puppet extends Actor
         cellIndex = currentCon.cellEnd;
         setLocationOffset(new Point(0, 0));
         currentCon = null;
-        navigationPane.prepareRoll(cellIndex);
+        navigationPane.prepareRoll(cellIndex, false);
       }
       return;
     }
@@ -139,9 +139,11 @@ public class Puppet extends Actor
       if (cellIndex == 100)  // Game over
       {
         setActEnabled(false);
-        navigationPane.prepareRoll(cellIndex);
+        navigationPane.prepareRoll(cellIndex,false);
         return;
       }
+
+      System.out.println("nbsteps is "+nbSteps);
 
       if (nbSteps >0) nbSteps--;
       if (nbSteps <0) nbSteps++;
@@ -152,6 +154,7 @@ public class Puppet extends Actor
         if ((currentCon = gamePane.getConnectionAt(getLocation())) != null
                 && !(isLowest && currentCon.cellEnd-currentCon.cellStart < 0))
         {
+
           gamePane.setSimulationPeriod(50);
           y = gamePane.toPoint(currentCon.locStart).y;
           if (currentCon.locEnd.y > currentCon.locStart.y)
@@ -171,8 +174,12 @@ public class Puppet extends Actor
         }
         else
         {
+          System.out.println("this happened isback is "+isBack);
           setActEnabled(false);
-          navigationPane.prepareRoll(cellIndex);
+          navigationPane.prepareRoll(cellIndex,isBack);
+          if (isBack){
+            setBack(false);
+          }
         }
       }
     }
