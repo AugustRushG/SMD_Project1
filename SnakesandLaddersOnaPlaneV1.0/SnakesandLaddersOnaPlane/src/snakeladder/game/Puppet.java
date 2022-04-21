@@ -143,7 +143,6 @@ public class Puppet extends Actor
         return;
       }
 
-      System.out.println("nbsteps is "+nbSteps);
 
       if (nbSteps >0) nbSteps--;
       if (nbSteps <0) nbSteps++;
@@ -174,9 +173,10 @@ public class Puppet extends Actor
         }
         else
         {
-          System.out.println("this happened isback is "+isBack);
           setActEnabled(false);
           navigationPane.prepareRoll(cellIndex,isBack);
+
+          // set isBack to false after this went back one space
           if (isBack){
             setBack(false);
           }

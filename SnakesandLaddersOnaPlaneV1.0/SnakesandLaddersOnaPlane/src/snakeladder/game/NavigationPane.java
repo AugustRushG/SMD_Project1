@@ -97,7 +97,7 @@ public class NavigationPane extends GameGrid
 
   private int numberOfDice;
   private int rollCount=0;
-  private boolean isMovedBack=false;
+
 
   //get number of dice
   public int getNumberOfDice(){
@@ -109,9 +109,7 @@ public class NavigationPane extends GameGrid
   private DiceRoller diceRoller=new DiceRoller(this);
 
   //
-  public void setIsMovedBack(boolean isMovedBack){
-    this.isMovedBack=isMovedBack;
-  }
+
 
 
 
@@ -308,6 +306,12 @@ public class NavigationPane extends GameGrid
     System.out.println("Result: " + text);
   }
 
+
+  /*
+  add one parameter which is boolean isBack, the function will take isBack, if its true, dont switch to next puppet
+  if its false, switch to next puppet
+  this will solve the problem of switching to next puppet after the puppet moved backwards.
+  */
   void prepareRoll(int currentIndex, boolean isBack)
   {
     if (currentIndex == 100)  // Game over
@@ -343,7 +347,7 @@ public class NavigationPane extends GameGrid
 
       for (Puppet p: gp.getAllPuppets()){
         if (i!=currentPuppetIndex && p.getCellIndex() == currentIndex){
-          System.out.println("set back now is true");
+          // set isBack to true, so Np knows that no need to switch after this backward move
           p.setBack(true);
           p.go(-1);
         }
@@ -351,9 +355,9 @@ public class NavigationPane extends GameGrid
       }
 
 
-
+      // if isBack is false, then switch to next puppet, otherwise, dont
+      System.out.println(isBack);
       if (!isBack){
-        System.out.println("switching to next puppet");
         gp.switchToNextPuppet();
       }
 

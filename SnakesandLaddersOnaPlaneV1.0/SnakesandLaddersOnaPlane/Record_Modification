@@ -34,3 +34,18 @@ NavigationPane class, modified the prepareRoll method
 In NavigationPane class, before the next roll fo next player, determine whether is there a puppet in the current cell,
 if so, set isBack of this Puppet to true, in order to get the puppet back one space.
 
+Also modified the method act in Puppet class, the original act only takes when nSteps are >0, but in order to let the
+puppet move backwards, it also has to take nSteps<0, so change it to when n!=0.
+The idea is basically the same with the original method, keep adding or subtracting nSteps (which moves the puppet)
+until the nSteps == 0.
+
+After all this modification, found out that when the puppet got moved backwards, the prepareRoll method in NavigationPane
+class will switch to next puppet, which means it counts moving backwards as moving steps, which will cause the puppet
+moved backwards not move in the next round.
+
+To fix this issue, we chose to extend the parameters of the prepareRoll method with extra Boolean isBack, in Puppet class
+there is already a boolean, isBack, so when Puppet class calls prepareRoll in NavagationPane, it inputs the isBack.
+The prepareRoll method will check isBack, if its false, then switch to next puppet, on the other hand it will not.
+
+This solves the problem of extra switching rounds.
+
