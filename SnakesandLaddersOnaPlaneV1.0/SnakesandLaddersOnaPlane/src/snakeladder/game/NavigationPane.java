@@ -226,6 +226,16 @@ public class NavigationPane extends GameGrid
     return RANDOM_ROLL_TAG;
   }
 
+  public void toggleButton(boolean toCheck){
+    if (toggleCheck.isChecked() && !toCheck){
+      toggleCheck.setChecked(false);
+      gp.reverseAllConnection();
+    } else  if (!toggleCheck.isChecked() && toCheck){
+      toggleCheck.setChecked(true);
+      gp.reverseAllConnection();
+    }
+  }
+
   void createGui()
   {
     addActor(new Actor("sprites/dieboard.gif"), dieBoardLocation);
@@ -304,6 +314,10 @@ public class NavigationPane extends GameGrid
   {
     resultField.setText(text);
     System.out.println("Result: " + text);
+
+    for (Puppet p :  gp.getAllPuppets()){
+      System.out.println(p.getStats());
+    }
   }
 
 

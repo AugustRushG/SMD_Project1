@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d1cda51-7890-4adb-8f69-c976568c3134" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/BasicToggleStrategy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/ToggleStrategy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/GamePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/GamePane.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/Statistic" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/NavigationPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/NavigationPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/Puppet.java" beforeDir="false" afterPath="$PROJECT_DIR$/SnakesandLaddersOnaPlaneV1.0/SnakesandLaddersOnaPlane/src/snakeladder/game/Puppet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

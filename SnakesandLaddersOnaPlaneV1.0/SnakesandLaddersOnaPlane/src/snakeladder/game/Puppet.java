@@ -19,6 +19,14 @@ public class Puppet extends Actor
   private boolean isLowest = false;
   private boolean isBack = false;
 
+  private ToggleStrategy  toggleStrategy = new BasicToggleStrategy();
+
+  private  Statistic stats;
+
+  public Statistic getStats() {
+    return this.stats;
+  }
+
   public void setBack(boolean isBack){
     this.isBack=isBack;
   }
@@ -179,6 +187,14 @@ public class Puppet extends Actor
           // set isBack to false after this went back one space
           if (isBack){
             setBack(false);
+          }
+        }
+        if(isAuto){
+          boolean toToggle = toggleStrategy.checkIfToggle(navigationPane, gamePane);
+          if(toToggle){
+            navigationPane.toggleButton(true);
+          }else{
+            navigationPane.toggleButton(false);
           }
         }
       }
