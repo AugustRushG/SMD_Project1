@@ -41,4 +41,14 @@ public abstract class Connection
   public double yLocationPercent(int locationCell) {
     return (double) locationCell / GamePane.NUMBER_VERTICAL_CELLS;
   }
+
+  public void reverseConnection(){
+    Location tmpLocation= locStart;
+    locStart =  locEnd;
+    locEnd = tmpLocation;
+
+    int tmpCell = cellStart;
+    cellStart = cellEnd;
+    cellEnd  = tmpCell;
+  }
 }
