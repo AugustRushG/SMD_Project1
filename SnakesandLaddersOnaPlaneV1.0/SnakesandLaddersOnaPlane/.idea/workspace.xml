@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a64696c-9665-448b-acc4-eeb9d81a87b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/SMD_Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/snakeladder/game/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/snakeladder/game/Connection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/snakeladder/game/GamePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/snakeladder/game/GamePane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/snakeladder/game/NavigationPane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/snakeladder/game/NavigationPane$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/snakeladder/game/NavigationPane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/snakeladder/game/NavigationPane$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/snakeladder/game/NavigationPane$ManualDieButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/snakeladder/game/NavigationPane$ManualDieButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/snakeladder/game/NavigationPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/snakeladder/game/NavigationPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/snakeladder/game/Puppet.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/snakeladder/game/Puppet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snakeladder/game/BasicToggleStrategy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snakeladder/game/GamePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snakeladder/game/GamePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snakeladder/game/NavigationPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snakeladder/game/NavigationPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snakeladder/game/Puppet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/snakeladder/game/Puppet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snakeladder/game/Statistic" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/snakeladder/game/ToggleStrategy" beforeDir="false" />
-    </list>
+    <list default="true" id="7a64696c-9665-448b-acc4-eeb9d81a87b6" name="Changes" comment="alldone but autotoggle" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,12 +19,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="FrameTutorial" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="snakeladder.game.FrameTutorial" />
@@ -79,5 +55,20 @@
       <updated>1650773225943</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="alldone but autotoggle" />
+    <option name="LAST_COMMIT_MESSAGE" value="alldone but autotoggle" />
   </component>
 </project>

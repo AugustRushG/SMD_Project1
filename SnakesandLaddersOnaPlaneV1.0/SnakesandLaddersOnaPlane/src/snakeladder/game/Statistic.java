@@ -34,7 +34,7 @@ public class Statistic{
             String k = entry.getKey().toString();
             String v = entry.getValue().toString();
             String line = String.format("%s-%s ", k, v);
-            stats+=line;
+            stats +=  line;
         }
 
         return stats;
