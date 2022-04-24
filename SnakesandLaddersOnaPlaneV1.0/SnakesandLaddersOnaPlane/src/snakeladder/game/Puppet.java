@@ -91,7 +91,6 @@ public class Puppet extends Actor
     return cellIndex;
   }
 
-
   private void moveToCell(int nbSteps){
     if (nbSteps>0){
       cellIndex++;
