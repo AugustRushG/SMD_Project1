@@ -31,11 +31,13 @@ public class Puppet extends Actor
     this.isBack=isBack;
   }
 
-  Puppet(GamePane gp, NavigationPane np, String puppetImage)
+  Puppet(GamePane gp, NavigationPane np, String puppetImage, String puppetName)
   {
     super(puppetImage);
     this.gamePane = gp;
     this.navigationPane = np;
+    this.puppetName = puppetName;
+    this.stats = new Statistic(puppetName);
   }
 
   public boolean isAuto() {
@@ -50,9 +52,7 @@ public class Puppet extends Actor
     return puppetName;
   }
 
-  public void setPuppetName(String puppetName) {
-    this.puppetName = puppetName;
-  }
+
 
 
   // modified
@@ -64,6 +64,11 @@ public class Puppet extends Actor
       setLocation(gamePane.startLocation);
     }
     this.nbSteps = nbSteps;
+
+    if (nbSteps > 0){
+      stats.rolled(nbSteps);
+    }
+
     // task 2, check if it's the lowest
     // steps will be the numberOfDice
     if ((nbSteps==navigationPane.getNumberOfDice())){
@@ -113,7 +118,7 @@ public class Puppet extends Actor
 
     // Animation: Move on connection
     // has to be not lowest and not going down by the snake
-    if (currentCon != null && !(isLowest && currentCon.cellEnd-currentCon.cellStart < 0))
+    if (currentCon != null && nbSteps ==  0 && !(isLowest && currentCon.cellEnd-currentCon.cellStart < 0))
     {
       int x = gamePane.x(y, currentCon);
       setPixelLocation(new Point(x, y));
@@ -178,9 +183,22 @@ public class Puppet extends Actor
             navigationPane.showStatus("Climbing...");
             navigationPane.playSound(GGSound.BOING);
           }
+          if(currentCon.cellEnd - currentCon.cellStart> 0){
+            stats.up();
+          }else{
+            stats.down();
+          }
         }
         else
         {
+          if(isAuto){
+            boolean toToggle = toggleStrategy.checkIfToggle(navigationPane, gamePane);
+            if(toToggle){
+              navigationPane.toggleButton(true);
+            }else{
+              navigationPane.toggleButton(false);
+            }
+          }
           setActEnabled(false);
           navigationPane.prepareRoll(cellIndex,isBack);
 
@@ -189,14 +207,7 @@ public class Puppet extends Actor
             setBack(false);
           }
         }
-        if(isAuto){
-          boolean toToggle = toggleStrategy.checkIfToggle(navigationPane, gamePane);
-          if(toToggle){
-            navigationPane.toggleButton(true);
-          }else{
-            navigationPane.toggleButton(false);
-          }
-        }
+
       }
     }
   }

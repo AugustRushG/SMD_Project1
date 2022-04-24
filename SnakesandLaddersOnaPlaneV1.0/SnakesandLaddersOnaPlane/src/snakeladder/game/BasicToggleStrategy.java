@@ -12,9 +12,11 @@ public class BasicToggleStrategy implements ToggleStrategy{
         for (int i = 0; i < currentCell + numberOfDice * 6; i++){
             if (gp.getConnectionAt(new Location(gp.cellToLocation(i))) instanceof Snake){
                 snakeCount += 1;
+                System.out.println(snakeCount);
             }
             if (gp.getConnectionAt(new Location(gp.cellToLocation(i))) instanceof Ladder){
                 ladderCount += 1;
+                System.out.println(ladderCount);
             }
         }
 

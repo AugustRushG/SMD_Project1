@@ -258,6 +258,8 @@ public class NavigationPane extends GameGrid
       @Override
       public void buttonChecked(GGCheckButton ggCheckButton, boolean checked) {
         isToggle = checked;
+        System.out.println("toggle button checked");
+        gp.reverseAllConnection();
       }
     });
 
@@ -316,7 +318,8 @@ public class NavigationPane extends GameGrid
     System.out.println("Result: " + text);
 
     for (Puppet p :  gp.getAllPuppets()){
-      System.out.println(p.getStats());
+      System.out.println(p.getStats().toStringDice());
+      System.out.println(p.getStats().toStringConnection());
     }
   }
 

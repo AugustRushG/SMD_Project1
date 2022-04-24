@@ -29,7 +29,14 @@ public class Statistic{
     }
 
     public String toStringDice(){
-        String stats = String.format("%s rolled: %s", playerName, rollMap.entrySet().toString());
+        String stats = String.format("%s rolled: ", playerName);
+        for (Map.Entry<Integer,Integer> entry : rollMap.entrySet()){
+            String k = entry.getKey().toString();
+            String v = entry.getValue().toString();
+            String line = String.format("%s-%s ", k, v);
+            stats+=line;
+        }
+
         return stats;
     }
 
